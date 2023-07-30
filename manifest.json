@@ -1,0 +1,11 @@
+{
+    "name": "Zen Tick",
+    "short_name": "Zen Tick",
+    "start_url": ".",
+    "display": "standalone",
+    "icons": [
+        {
+            
+        }
+    ]
+}

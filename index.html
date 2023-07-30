@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>ZenTick</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     
+    <h1>ZenTick</h1>
 
-    <script src="./js/script.js"></script>
+    <h3 id="time">Current Time: 12:00pm</h3>
+
+    <input type="text" id="alarm-input" placeholder="Enter your alarm time - 12:00">
+    <button id="set-alarm">Add Alarm</button>
+
+    <div class="alarm">
+        <p>No alarms have been added yet.</p>
+    </div>
+
+    <script src="/js/script.js"></script>
 </body>
 </html>
