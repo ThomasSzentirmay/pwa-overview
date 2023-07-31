@@ -3,11 +3,14 @@
     "short_name": "Zen Tick",
     "start_url": ".",
     "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#51FF8E",
     "icons": [
         {
             "src": "/img/zentick_logo_192.png",
             "sizes":"192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/img/zentick_logo_512.png",
