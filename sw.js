@@ -1,4 +1,5 @@
 self.addEventListener('install', e => {
+
     e.waitUntil(
         caches.open('static')
             .then(cache => {
@@ -9,4 +10,16 @@ self.addEventListener('install', e => {
                 ])
             })
     );
+
+});
+
+self.addEventListener('fetch', e => {
+
+    e.respondWith(
+        caches.match(e.request).then(cachedRes => {
+            console.log(cachedRes);
+            return cachedRes || fetch(e.request);
+        })
+    );
+    
 });
