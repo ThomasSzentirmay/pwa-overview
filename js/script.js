@@ -17,12 +17,22 @@ function registerSW() {
     } else alert('This app cannot be installed until you activate service workers')
 }
 
+function saveAlarm() {
+    const alarmInput = document.querySelector('#alarm-input');
+    const time = dayjs(alarmInput, 'HH:MM');
+}
+
 function init() {
+    const alarmBtn = document.querySelector('#set-alarm');
+
     // Register SW
     registerSW();
 
     // Start clock
     clock();
+
+    // Alarm even listener
+    alarmBtn.addEventListener('click', saveAlarm);
 }
 
 // Start App
