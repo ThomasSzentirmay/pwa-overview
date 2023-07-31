@@ -5,8 +5,8 @@ self.addEventListener('install', e => {
                 return cache.addAll([
                     'index.html',
                     'css/style.css',
-                    'img/logo_192.png'
+                    'img/zentick_logo_192.png'
                 ])
             })
     );
-})
+});
