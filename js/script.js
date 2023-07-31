@@ -24,15 +24,19 @@ function registerSW() {
 
 function saveAlarm() {
     const alarmInput = document.querySelector('#alarm-input');
-    const time = dayjs(alarmInput.value, 'HH:mm');
-    if (!time.isValid()) {
+    const time = alarmInput.value.trim();
+    const validTimePattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+
+    if (!validTimePattern.test(time)) {
         alert('Please enter a valid time in the format HH:mm.');
         return;
     }
 
-    const existingAlarms = JSON.parse(localStorage.getItem('alarms')) || [];
+    // Convert time to 12-hour format with AM/PM
+    const formattedTime = dayjs(time, 'HH:mm').format('h:mmA');
 
-    existingAlarms.push(time.format('HH:mm'));
+    const existingAlarms = JSON.parse(localStorage.getItem('alarms')) || [];
+    existingAlarms.push(formattedTime); // Save the time in the desired format
 
     localStorage.setItem('alarms', JSON.stringify(existingAlarms));
 
@@ -62,8 +66,13 @@ function displayAlarms() {
     existingAlarms.forEach(alarmTime => {
         const alarmDiv = document.createElement('div');
         alarmDiv.classList.add('alarm');
+
+        // Parse alarmTime in 24-hour format and then format to 12-hour with AM/PM
+        const parsedTime = dayjs(alarmTime, 'HH:mm');
+        const formattedTime = parsedTime.isValid() ? parsedTime.format('h:mmA') : 'Invalid Date';
+
         alarmDiv.innerHTML = `
-            <p>${alarmTime}</p>
+            <p>${formattedTime}</p>
             <button class="stop-alarm" data-time="${alarmTime}">Stop</button>
         `;
         alarmsContainer.appendChild(alarmDiv);
